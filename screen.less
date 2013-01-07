@@ -1,0 +1,188 @@
+@import "preboot.less";
+
+#document > .reset();
+
+html {
+    background-color: #fafafa;
+    color: #333;
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+p, blockquote, dd {
+    font-size: 15px;
+    line-height: 23px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+dt {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+dd {
+    margin-bottom: 30px;
+}
+
+ul {
+    list-style: disc inside;
+}
+
+header {
+    h1 {
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    h3 {
+        color: lighten(#333, 30%);
+    }
+}
+
+#container {
+    .group();
+    margin: 40px auto;
+    width: 920px;
+}
+
+#resume {
+    .pull-left();
+    width: 600px;
+
+    section {
+        margin: 50px 0px;
+        page-break-inside: avoid;
+    }
+
+    h1 {
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+
+    p, img, blockquote {
+        margin-bottom: 20px;
+    }
+
+    a {
+        font-weight: bold;
+    }
+}
+
+#bio {
+    .pull-right();
+    width: 260px;
+
+    #picture {
+        .circle(300px);
+        .box-shadow(inset 0px 2px 20px rgba(0, 0, 0, 0.9));
+        border: 6px solid #ddd;
+        background: url("andrew-mccloud.jpeg") no-repeat;
+        margin: 0px auto;
+        margin-bottom: 20px;
+        width: 200px;
+        height: 200px;
+
+        img {
+            .circle(300px);
+            display: none;
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    p {
+        color: lighten(#333, 30%);
+        line-height: 25px;
+        margin-bottom: 40px;
+    }
+
+    blockquote {
+        color: #ccc;
+        font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Georgia, serif;
+        font-style: oblique;
+        text-align: center;
+        font-size: 24px;
+    }
+
+    #online {
+        h1 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 20px;
+
+            li {
+                margin-bottom: 10px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+#skills {
+    .group();
+
+    ul {
+        margin-left: 10px;
+
+        li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+    }
+
+    & > div {
+        .pull-left();
+        width: 33.33%;
+
+        h1 {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+#experience {
+    dt abbr {
+        color: #aaa;
+        font-size: 14px;
+        font-weight: normal;
+    }
+}
+
+@media print {
+    #bio {
+        border: none;
+
+        div#picture {
+            img {
+                display: block;
+            }
+        }
+    }
+}

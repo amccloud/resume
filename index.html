@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Andrew McCloud &middot; I make web.</title>
+        <link type="text/css" rel="stylesheet" href="screen.css">
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <h1>Andrew M<sup>c</sup>Cloud</h1>
+                <h2><a href="mailto:andrew@amccloud.com">andrew@amccloud.com</a> &middot; (702) 465-5696 &middot; @<a href="http://twitter.com/amccloud">amccloud</a></h2>
+                <h3>Las Vegas, NV</h3>
+            </header>
+            <div id="resume">
+                <section id="interest">
+                    <h1>Interest</h1>
+                    <p>Prototyping and architecting ideas; Open source software; Optimizing and minifying code; and single page applications.</p>
+                </section>
+                <section id="skills">
+                    <h1>Skills</h1>
+                    <div class="advanced">
+                        <h1>Advanced</h1>
+                        <ul>
+                            <li>Python</li>
+                            <li>Javascript</li>
+                            <li>APIs</li>
+                            <li>HTML &amp; CSS</li>
+                        </ul>
+                    </div>
+                    <div class="proficient">
+                        <h1>Proficient</h1>
+                        <ul>
+                            <li>PHP</li>
+                            <li>Objective-C</li>
+                            <li>Node</li>
+                            <li>SQL</li>
+                            <li>Linux</li>
+                        </ul>
+                    </div>
+                    <div class="competent">
+                        <h1>Competent</h1>
+                        <ul>
+                            <li>Java</li>
+                            <li>Ruby</li>
+                            <li>Unit Testing</li>
+                            <li>CI</li>
+                        </ul>
+                    </div>
+                </section>
+                <section id="experience">
+                    <h1>Experience</h1>
+                    <dl>
+                        <dt>Software Engineer at Pixelcloud, Inc <abbr title="2 Years, 1 Month">2010 &mdash; 2012</abbr></dt>
+                        <dd>As an engineer at Pixelcloud I was responsible for the architecture and building of the entire stack. My responsibilities extended to planning, project management, and deployment. Pixelcloud's
+            architecture was built with a handful of loosely coupled services. A RESTful API, processing queue, thumbnail server, websocket server, and a client side Javascript application that tied everything together.</dd>
+                        <dt>Software Engineer Intern at Zappos.com (ZCode/TechU) <abbr title="2 Months">2012</abbr></dt>
+                        <dd>Spent a great bit of time absorbing and learning all I can. Explored Java, service oriented architecture, cross
+            functional teams, and lean development cycle.</dd>
+                        <dt>Software Engineer at Lifestream.ms <abbr title="6 Months">2009</abbr></dt>
+                        <dd>I assisted in architecting the core backend which consisted of a distributed social event aggregator and a
+            social graph.</dd>
+                        <dt>Freelance &amp; Consulting <abbr title="Ongoing">2007 &mdash; Present</abbr></dt>
+                        <dd>Freelancing work and consulting work revolving around PHP, HTML &amp; CSS, Django, and Backbone.js.</dd>
+                    </dl>
+                </section>
+                <section id="projects">
+                    <h1>Projects</h1>
+                    <dl id="github-projects">
+                        <dd>Loading...<dd>
+                    </dl>
+                </section>
+            </div>
+            <div id="bio">
+                <div id="picture">
+                    <img src="andrew-mccloud.jpeg" title="Andrew McCloud">
+                </div>
+                <p>I love being challenged and I enjoy the process of trying to figure things out. I am opinionated but flexible to new experiences and thrive for an opportunity to learn.</p>
+                <blockquote cite="http://en.wikipedia.org/wiki/Dieter_Rams">&ldquo;Less but better&rdquo;</blockquote>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                'use strict';
+
+                var githubUsername = 'amccloud',
+                    $projectList = $('#github-projects');
+
+                $.getJSON('https://api.github.com/users/' + githubUsername + '/repos?callback=?', null, function(response) {
+                    $projectList.html('');
+
+                    $.each(response.data, function(i, repo) {
+                        if (repo.fork)
+                            return;
+
+                        var $link = $('<a>'),
+                            $title = $('<dt>'),
+                            $description = $('<dd>');
+
+                        $link.html(repo.name).attr('href', repo.html_url);
+                        $title.append($link);
+                        $description.html(repo.description);
+                        $projectList.append($title, $description);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
